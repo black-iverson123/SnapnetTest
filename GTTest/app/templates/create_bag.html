@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block app_content %}
+
+<div class='container'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <div class='col-md-4'>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <p>{{ form.name.label}}</p>
+                <p> {{ form.name(class_="form-control")}}</p>
+                {% for error in  form.name.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.Description.label(class="form-label") }}<br>
+                {{ form.Description(cols=50, rows=4, class="form-control") }}<br>
+                {% for error in  form.Description.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.Price.label(class="form-label") }}<br>
+                {{ form.Price(class="form-control") }}<br>
+                {% for error in  form.Price.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p> {{ form.submit(class="btn btn-primary")}} </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
